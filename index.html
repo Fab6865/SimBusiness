@@ -1,0 +1,634 @@
+<html><head><base href="https://png.pngtree.com/element_our/20200702/ourlarge/pngtree-fruitful-apple-tree-image_2284964.jpg%20arbre%20a%20clic">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SimBusiness - Simulateur d'Investissement Crypto</title>
+<style>
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f7f9;
+        color: #333;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    h1, h2 {
+        color: #2c3e50;
+        text-align: center;
+    }
+    h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    .crypto-section, .real-estate-section, .shop-section, .clicker-section {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    .crypto-section:hover, .real-estate-section:hover, .shop-section:hover, .clicker-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    .crypto-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+    .crypto-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        background-color: #f9f9f9;
+        transition: all 0.3s ease;
+    }
+    .crypto-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .price-display {
+        font-size: 22px;
+        font-weight: bold;
+        margin: 15px 0;
+        color: #3498db;
+    }
+    .btn {
+        background-color: #3498db;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 5px 2px;
+        cursor: pointer;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+    .btn:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+    }
+    .profit-display {
+        font-size: 18px;
+        margin-top: 15px;
+        color: #27ae60;
+    }
+    .menu-btn {
+        background-color: #2ecc71;
+        font-weight: bold;
+    }
+    .menu-btn:hover {
+        background-color: #27ae60;
+    }
+    .property-list, .shop-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .property-item, .shop-item {
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .property-item:hover, .shop-item:hover {
+        background-color: #f0f0f0;
+        transform: translateX(5px);
+    }
+    .property-image, .shop-image {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 15px;
+    }
+    .property-info, .shop-info {
+        flex-grow: 1;
+    }
+    .property-buttons, .shop-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+    .upgrade-btn {
+        background-color: #e67e22;
+    }
+    .upgrade-btn:hover {
+        background-color: #d35400;
+    }
+    .clicker-tree {
+        width: 250px;
+        height: 350px;
+        background-image: url('https://png.pngtree.com/element_our/20200702/ourlarge/pngtree-fruitful-apple-tree-image_2284964.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 0 auto;
+        cursor: pointer;
+        transition: transform 0.1s;
+    }
+    .clicker-tree:active {
+        transform: scale(0.95);
+    }
+    .balance-display {
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+        color: #2c3e50;
+    }
+    .hourly-income-display {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #27ae60;
+    }
+    .price-change {
+        font-size: 16px;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    .price-up {
+        color: #2ecc71;
+    }
+    .price-down {
+        color: #e74c3c;
+    }
+    .total-profit {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 30px;
+        color: #27ae60;
+        padding: 15px;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+    }
+    .menu-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .total-investment {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+        color: #3498db;
+        padding: 15px;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+    }
+    @media (max-width: 768px) {
+        .crypto-grid {
+            grid-template-columns: 1fr;
+        }
+        .menu-container {
+            flex-wrap: wrap;
+        }
+        .property-item, .shop-item {
+            flex-direction: column;
+            text-align: center;
+        }
+        .property-image, .shop-image {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+        .property-buttons, .shop-buttons {
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 15px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>SimBusiness - Simulateur d'Investissement Crypto</h1>
+    
+    <div class="balance-display">Solde: <span id="balance">1000</span> €</div>
+    <div class="hourly-income-display">Revenu par heure: <span id="hourly-income">0</span> €</div>
+    <div class="total-investment">Somme totale investie: <span id="total-investment">0</span> €</div>
+    
+    <div class="menu-container">
+        <button class="btn menu-btn" id="crypto-menu">Cryptomonnaies</button>
+        <button class="btn menu-btn" id="real-estate-menu">Immobilier</button>
+        <button class="btn menu-btn" id="shop-menu">Magasin</button>
+        <button class="btn menu-btn" id="clicker-menu">Arbre à clic</button>
+    </div>
+
+    <div class="total-profit">Profit total des cryptos: <span id="total-crypto-profit">0</span> €</div>
+    
+    <div class="crypto-section">
+        <h2>Cryptomonnaies</h2>
+        <div class="crypto-grid" id="crypto-grid"></div>
+    </div>
+    
+    <div class="real-estate-section" style="display: none;">
+        <h2>Investissement Immobilier</h2>
+        <ul class="property-list" id="property-list"></ul>
+    </div>
+    
+    <div class="shop-section" style="display: none;">
+        <h2>Magasin</h2>
+        <ul class="shop-list" id="shop-list"></ul>
+    </div>
+    
+    <div class="clicker-section" style="display: none;">
+        <h2>Arbre à clic</h2>
+        <div class="clicker-tree" id="clicker-tree"></div>
+        <p>Niveau: <span id="clicker-level">1</span></p>
+        <p>Gain par clic: <span id="clicker-gain">1</span> €</p>
+        <button class="btn upgrade-btn" id="upgrade-clicker">Améliorer (coût: <span id="upgrade-cost">10</span> €)</button>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script>
+let cryptos = [
+    { name: 'Bitcoin', symbol: 'BTC', price: 300, owned: 0, volatility: 0.50 },
+    { name: 'Ethereum', symbol: 'ETH', price: 200, owned: 0, volatility: 0.70 },
+    { name: 'Cardano', symbol: 'ADA', price: 1.5, owned: 0, volatility: 0.10 },
+    { name: 'Polkadot', symbol: 'DOT', price: 20, owned: 0, volatility: 0.80 },
+    { name: 'Dogecoin', symbol: 'DOGE', price: 0.3, owned: 0, volatility: 0.15 }
+];
+
+let properties = [
+    { name: 'Appartement', price: 100000, income: 500, owned: 0, upgradePrice: 10000, image: 'https://www.barnes-lyon.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTVlIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7d9a2d377d524a8525b7e7cf7bb3505622f56583/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2Q25OaGRtVnlld1k2REhGMVlXeHBkSGxwTFE9PSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--219e57ae91f9183b6c38d81e8a46ec8a90285f73/appartement-contemporain-lyon.jpg' },
+    { name: 'Maison', price: 250000, income: 1200, owned: 0, upgradePrice: 25000, image: 'https://prod-saint-gobain-fr.content.saint-gobain.io/sites/saint-gobain.fr/files/2022-04/maison-contemporaine-la-maison-saint-gobain01.jpg' },
+    { name: 'Villa', price: 500000, income: 2500, owned: 0, upgradePrice: 50000, image: 'https://www.cercleduvoyage.com/wp-content/uploads/2020/08/villa-vacandces.jpg' }
+];
+
+let shops = [
+    { name: 'Épicerie', price: 50000, income: 200, owned: 0, upgradePrice: 5000, image: 'https://sf1.viepratique.fr/wp-content/uploads/sites/2/2021/06/des-idees-pour-sublimer-des-produits-depicerie-fine-en-cuisine.jpg' },
+    { name: 'Restaurant', price: 150000, income: 800, owned: 0, upgradePrice: 15000, image: 'https://www.tourisme-rennes.com/voy_content/uploads/2023/09/ami-social-grill-6336-1600px-4033.jpg' },
+    { name: 'Centre commercial', price: 1000000, income: 5000, owned: 0, upgradePrice: 100000, image: 'https://www.dynamique-mag.com/wp-content/uploads/a6531477e0b7fed9d52018f38265394c.jpg' }
+];
+
+let balance = 1000;
+let clickerLevel = 1;
+let clickerGain = 1;
+let upgradeClickerCost = 10;
+let lastPrices = {};
+let cryptoPurchases = {};
+let totalInvestment = 0;
+
+function updateCryptoPrices() {
+    cryptos.forEach(crypto => {
+        lastPrices[crypto.symbol] = crypto.price;
+        const change = (Math.random() - 0.5) * 2 * crypto.volatility;
+        crypto.price *= (1 + change);
+        crypto.price = Math.max(0.01, crypto.price);
+    });
+    updateDisplay();
+}
+
+function formatPrice(price) {
+    return price.toFixed(2);
+}
+
+function formatNumber(number) {
+    return number.toLocaleString('fr-FR');
+}
+
+function calculateHourlyIncome() {
+    let income = 0;
+    properties.forEach(property => {
+        income += property.income * property.owned;
+    });
+    shops.forEach(shop => {
+        income += shop.income * shop.owned;
+    });
+    return income;
+}
+
+function updateDisplay() {
+    document.getElementById('balance').textContent = formatNumber(Math.floor(balance));
+    document.getElementById('hourly-income').textContent = formatNumber(calculateHourlyIncome());
+    document.getElementById('clicker-level').textContent = clickerLevel;
+    document.getElementById('clicker-gain').textContent = formatNumber(clickerGain);
+    document.getElementById('upgrade-cost').textContent = formatNumber(upgradeClickerCost);
+    document.getElementById('total-investment').textContent = formatNumber(Math.floor(totalInvestment));
+    
+    const cryptoGrid = document.getElementById('crypto-grid');
+    cryptoGrid.innerHTML = '';
+    
+    let totalProfit = 0;
+    
+    cryptos.forEach(crypto => {
+        const card = document.createElement('div');
+        card.className = 'crypto-card';
+        
+        const priceChange = ((crypto.price - lastPrices[crypto.symbol]) / lastPrices[crypto.symbol]) * 100;
+        const priceChangeClass = priceChange >= 0 ? 'price-up' : 'price-down';
+        const priceChangeArrow = priceChange >= 0 ? '▲' : '▼';
+        
+        let profit = 0;
+        if (cryptoPurchases[crypto.symbol]) {
+            profit = (crypto.price - cryptoPurchases[crypto.symbol].avgPrice) * crypto.owned;
+            totalProfit += profit;
+        }
+        
+        card.innerHTML = `
+            <h3>${crypto.name} (${crypto.symbol})</h3>
+            <div class="price-display">${formatPrice(crypto.price)} €</div>
+            <div class="price-change ${priceChangeClass}">${priceChangeArrow} ${Math.abs(priceChange).toFixed(2)}%</div>
+            <p>Possédé: ${formatNumber(crypto.owned)}</p>
+            <div class="profit-display">Profit: ${formatPrice(profit)} €</div>
+            <button class="btn" onclick="buyCrypto('${crypto.symbol}')">Acheter</button>
+            <button class="btn" onclick="sellCrypto('${crypto.symbol}')">Vendre</button>
+            <button class="btn" onclick="buyMaxCrypto('${crypto.symbol}')">Acheter Max</button>
+            <button class="btn" onclick="sellAllCrypto('${crypto.symbol}')">Vendre Tout</button>
+        `;
+        cryptoGrid.appendChild(card);
+    });
+    
+    document.getElementById('total-crypto-profit').textContent = formatPrice(totalProfit);
+    
+    const propertyList = document.getElementById('property-list');
+    propertyList.innerHTML = '';
+    properties.forEach(property => {
+        const item = document.createElement('li');
+        item.className = 'property-item';
+        item.innerHTML = `
+            <img src="${property.image}" alt="${property.name}" class="property-image">
+            <div class="property-info">
+                <h3>${property.name}</h3>
+                <p>Prix: ${formatNumber(property.price)} €</p>
+                <p>Revenu: ${formatNumber(property.income)} €/h</p>
+                <p>Possédé: ${property.owned}</p>
+            </div>
+            <div class="property-buttons">
+                <button class="btn" onclick="buyProperty('${property.name}')">Acheter</button>
+                <button class="btn upgrade-btn" onclick="upgradeProperty('${property.name}')">Améliorer (${formatNumber(property.upgradePrice)} €)</button>
+            </div>
+        `;
+        propertyList.appendChild(item);
+    });
+    
+    const shopList = document.getElementById('shop-list');
+    shopList.innerHTML = '';
+    shops.forEach(shop => {
+        const item = document.createElement('li');
+        item.className = 'shop-item';
+        item.innerHTML = `
+            <img src="${shop.image}" alt="${shop.name}" class="shop-image">
+            <div class="shop-info">
+                <h3>${shop.name}</h3>
+                <p>Prix: ${formatNumber(shop.price)} €</p>
+                <p>Revenu: ${formatNumber(shop.income)} €/h</p>
+                <p>Possédé: ${shop.owned}</p>
+            </div>
+            <div class="shop-buttons">
+                <button class="btn" onclick="buyShop('${shop.name}')">Acheter</button>
+                <button class="btn upgrade-btn" onclick="upgradeShop('${shop.name}')">Améliorer (${formatNumber(shop.upgradePrice)} €)</button>
+            </div>
+        `;
+        shopList.appendChild(item);
+    });
+}
+
+function buyCrypto(symbol) {
+    const crypto = cryptos.find(c => c.symbol === symbol);
+    if (balance >= crypto.price) {
+        balance -= crypto.price;
+        crypto.owned++;
+        totalInvestment += crypto.price;
+        updateCryptoPurchase(symbol, crypto.price, 1);
+        updateDisplay();
+    } else {
+        alert("Fonds insuffisants!");
+    }
+}
+
+function sellCrypto(symbol) {
+    const crypto = cryptos.find(c => c.symbol === symbol);
+    if (crypto.owned > 0) {
+        balance += crypto.price;
+        crypto.owned--;
+        updateCryptoPurchase(symbol, crypto.price, -1);
+        updateDisplay();
+    } else {
+        alert("Vous n'avez pas de " + crypto.name + " à vendre!");
+    }
+}
+
+function buyMaxCrypto(symbol) {
+    const crypto = cryptos.find(c => c.symbol === symbol);
+    const maxAmount = Math.floor(balance / crypto.price);
+    if (maxAmount > 0) {
+        const totalCost = maxAmount * crypto.price;
+        balance -= totalCost;
+        crypto.owned += maxAmount;
+        totalInvestment += totalCost;
+        updateCryptoPurchase(symbol, crypto.price, maxAmount);
+        updateDisplay();
+    } else {
+        alert("Fonds insuffisants pour acheter " + crypto.name + "!");
+    }
+}
+
+function sellAllCrypto(symbol) {
+    const crypto = cryptos.find(c => c.symbol === symbol);
+    if (crypto.owned > 0) {
+        balance += crypto.owned * crypto.price;
+        const soldAmount = crypto.owned;
+        crypto.owned = 0;
+        updateCryptoPurchase(symbol, crypto.price, -soldAmount);
+        updateDisplay();
+    } else {
+        alert("Vous n'avez pas de " + crypto.name + " à vendre!");
+    }
+}
+
+function updateCryptoPurchase(symbol, price, amount) {
+    if (!cryptoPurchases[symbol]) {
+        cryptoPurchases[symbol] = { totalCost: 0, totalAmount: 0 };
+    }
+    
+    const purchase = cryptoPurchases[symbol];
+    
+    if (amount > 0) {
+        purchase.totalCost += price * amount;
+        purchase.totalAmount += amount;
+    } else {
+        purchase.totalAmount += amount;
+        if (purchase.totalAmount <= 0) {
+            purchase.totalCost = 0;
+            purchase.totalAmount = 0;
+        }
+    }
+    
+    if (purchase.totalAmount > 0) {
+        purchase.avgPrice = purchase.totalCost / purchase.totalAmount;
+    } else {
+        purchase.avgPrice = 0;
+    }
+}
+
+function buyProperty(name) {
+    const property = properties.find(p => p.name === name);
+    if (balance >= property.price) {
+        balance -= property.price;
+        property.owned++;
+        totalInvestment += property.price;
+        updateDisplay();
+    } else {
+        alert("Fonds insuffisants!");
+    }
+}
+
+function upgradeProperty(name) {
+    const property = properties.find(p => p.name === name);
+    if (balance >= property.upgradePrice) {
+        balance -= property.upgradePrice;
+        totalInvestment += property.upgradePrice;
+        property.income *= 1.2;
+        property.upgradePrice *= 1.5;
+        updateDisplay();
+    } else {
+        alert("Fonds insuffisants!");
+    }
+}
+
+function buyShop(name) {
+    const shop = shops.find(s => s.name === name);
+    if (balance >= shop.price) {
+        balance -= shop.price;
+        shop.owned++;
+        totalInvestment += shop.price;
+        updateDisplay();
+    } else {
+        alert("Fonds insuffisants!");
+    }
+}
+
+function upgradeShop(name) {
+    const shop = shops.find(s => s.name === name);
+    if (balance >= shop.upgradePrice) {
+        balance -= shop.upgradePrice;
+        totalInvestment += shop.upgradePrice;
+        shop.income *= 1.2;
+        shop.upgradePrice *= 1.5;
+        updateDisplay();
+    } else {
+        alert("Fonds insuffisants!");
+    }
+}
+
+function clickTree() {
+    balance += clickerGain;
+    updateDisplay();
+}
+
+function upgradeClicker() {
+    if (balance >= upgradeClickerCost) {
+        balance -= upgradeClickerCost;
+        totalInvestment += upgradeClickerCost;
+        clickerLevel++;
+        clickerGain *= 1.5;
+        upgradeClickerCost *= 2;
+        updateDisplay();
+    } else {
+        alert("Fonds insuffisants!");
+    }
+}
+
+function collectIncome() {
+    properties.forEach(property => {
+        balance += property.income * property.owned;
+    });
+    shops.forEach(shop => {
+        balance += shop.income * shop.owned;
+    });
+    updateDisplay();
+}
+
+setInterval(updateCryptoPrices, 5000);
+setInterval(collectIncome, 3600000);
+
+document.getElementById('crypto-menu').addEventListener('click', () => {
+    document.querySelector('.crypto-section').style.display = 'block';
+    document.querySelector('.real-estate-section').style.display = 'none';
+    document.querySelector('.shop-section').style.display = 'none';
+    document.querySelector('.clicker-section').style.display = 'none';
+});
+
+document.getElementById('real-estate-menu').addEventListener('click', () => {
+    document.querySelector('.crypto-section').style.display = 'none';
+    document.querySelector('.real-estate-section').style.display = 'block';
+    document.querySelector('.shop-section').style.display = 'none';
+    document.querySelector('.clicker-section').style.display = 'none';
+});
+
+document.getElementById('shop-menu').addEventListener('click', () => {
+    document.querySelector('.crypto-section').style.display = 'none';
+    document.querySelector('.real-estate-section').style.display = 'none';
+    document.querySelector('.shop-section').style.display = 'block';
+    document.querySelector('.clicker-section').style.display = 'none';
+});
+
+document.getElementById('clicker-menu').addEventListener('click', () => {
+    document.querySelector('.crypto-section').style.display = 'none';
+    document.querySelector('.real-estate-section').style.display = 'none';
+    document.querySelector('.shop-section').style.display = 'none';
+    document.querySelector('.clicker-section').style.display = 'block';
+});
+
+document.getElementById('clicker-tree').addEventListener('click', clickTree);
+document.getElementById('upgrade-clicker').addEventListener('click', upgradeClicker);
+
+function saveGame() {
+    const gameState = {
+        balance,
+        cryptos,
+        properties,
+        shops,
+        clickerLevel,
+        clickerGain,
+        upgradeClickerCost,
+        cryptoPurchases,
+        totalInvestment
+    };
+    localStorage.setItem('cryptoBusinessSim', JSON.stringify(gameState));
+}
+
+function loadGame() {
+    const savedState = localStorage.getItem('cryptoBusinessSim');
+    if (savedState) {
+        const gameState = JSON.parse(savedState);
+        balance = gameState.balance;
+        cryptos = gameState.cryptos;
+        properties = gameState.properties;
+        shops = gameState.shops;
+        clickerLevel = gameState.clickerLevel;
+        clickerGain = gameState.clickerGain;
+        upgradeClickerCost = gameState.upgradeClickerCost;
+        cryptoPurchases = gameState.cryptoPurchases;
+        totalInvestment = gameState.totalInvestment || 0;
+        updateDisplay();
+    }
+}
+
+setInterval(saveGame, 60000);
+loadGame();
+updateDisplay();
+</script>
+</body></html>
